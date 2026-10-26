@@ -23,6 +23,8 @@ import {
 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
+const supabaseClient = createClient();
+
 const consultas = [
   {
     paciente: "Mariana Oliveira",
@@ -73,7 +75,7 @@ const tabelas = [
 ];
 
 export default function Home() {
-  const [supabase] = useState(createClient);
+  const [supabase] = useState(() => supabaseClient);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
